@@ -15,8 +15,14 @@ const orderSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'DeliveryStatus' 
   },
-  createdAt: moment.tz('Asia/Manila').toDate(),
-  updatedAt: moment.tz('Asia/Manila').toDate(),
+  createdAt: {
+    type: Date,
+    default: moment.tz('Asia/Manila').toDate(),
+  },
+  updatedAt: {
+    type: Date,
+    default: moment.tz('Asia/Manila').toDate(),
+  }
 });
 
 const Order = mongoose.model('Order', orderSchema);

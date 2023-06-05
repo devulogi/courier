@@ -54,7 +54,7 @@ app.use(
     cookie: {
       httpOnly: true,
       sameSite: true,
-      maxAge: 60000,
+      maxAge: 3600000, // 1 minute expiration time in milliseconds
     },
     store: redisStore,
     secret: process.env.SECRET_KEY,

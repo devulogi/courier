@@ -6,8 +6,14 @@ const packageSchema = new mongoose.Schema({
   weight: Number,
   dimensions: String,
   contents: String,
-  createdAt: moment.tz('Asia/Manila').toDate(),
-  updatedAt: moment.tz('Asia/Manila').toDate(),
+  createdAt: {
+    type: Date,
+    default: moment.tz('Asia/Manila').toDate(),
+  },
+  updatedAt: {
+    type: Date,
+    default: moment.tz('Asia/Manila').toDate(),
+  }
 });
 
 const Package = mongoose.model('Package', packageSchema);

@@ -20,8 +20,14 @@ const deliveryStatusSchema = new mongoose.Schema({
      */
     default: 'pending-pickup',
   },
-  createdAt: moment.tz('Asia/Manila').toDate(),
-  updatedAt: moment.tz('Asia/Manila').toDate(),
+  createdAt: {
+    type: Date,
+    default: moment.tz('Asia/Manila').toDate(),
+  },
+  updatedAt: {
+    type: Date,
+    default: moment.tz('Asia/Manila').toDate(),
+  }
 });
 
 const DeliveryStatus = mongoose.model('DeliveryStatus', deliveryStatusSchema);

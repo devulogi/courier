@@ -18,8 +18,14 @@ const userSchema = new mongoose.Schema({
      * admin: An admin who can manage users and orders.
      */
   },
-  createdAt: moment.tz('Asia/Manila').toDate(),
-  updatedAt: moment.tz('Asia/Manila').toDate(),
+  createdAt: {
+    type: Date,
+    default: moment.tz('Asia/Manila').toDate(),
+  },
+  updatedAt: {
+    type: Date,
+    default: moment.tz('Asia/Manila').toDate(),
+  }
 });
 
 const User = mongoose.model('User', userSchema);
