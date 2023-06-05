@@ -1,0 +1,36 @@
+extends ../layout.pug
+
+block header
+  //- include ../components/header.block.pug
+
+  h2 Register an Account
+  form(method='post' action='/register')
+    div
+      label(for='email') Email: 
+      input(type='email' name='email' id='email')
+    div
+      label(for='password') Password: 
+      input(type='password' name='password' id='password')
+    div
+      label(for='password2') Confirm Password: 
+      input(type='password' name='password2' id='password2')
+    input(type='submit' value='Register')
+
+  if currentUser
+    h2 Current User
+    div
+      p Welcome #{currentUser.email}
+    div
+      a(href='/logout') Logout
+  else
+    h2 Loginif errors
+    for e in errors
+      div(style="color: red").error= e
+    form(method='post' action='/login')
+      div
+        label(for='email') Email: 
+        input(type='email' name='email' id='email')
+      div
+        label(for='password') Password: 
+        input(type='password' name='password' id='password')
+      input(type='submit' value='Login')
