@@ -7,6 +7,7 @@ const RedisStore = require('connect-redis')(session);
 const flash = require('connect-flash');
 const passport = require('passport');
 const path = require('path');
+const { doubleCsrf } = require('csrf-csrf');
 require('dotenv').config();
 
 const { redisClient } = require('./services/redis.service');
@@ -19,6 +20,12 @@ const redisStore = new RedisStore({
   client: redisClient,
   ttl: 60 * 60 * 1, // 1 hour expiration time in seconds (seconds * minutes * hours)
 });
+/** CSRF PROTECTION */
+const { doubleCsrfProtection } = doubleCsrf({
+  secretLength: 32,
+  saltLength: 16,
+});
+
 const app = express();
 
 mongoConnection.on('error', err => {
@@ -46,6 +53,7 @@ app.use(
   session({
     cookie: {
       httpOnly: true,
+      sameSite: true,
       maxAge: 60000,
     },
     store: redisStore,
