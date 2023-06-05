@@ -20,6 +20,8 @@ block header
     h2 Current User
     div
       p Welcome #{currentUser.email}
+      p Permission level: #{currentUser.role}
+      p ID: #{currentUser.id}
     div
       a(href='/logout') Logout
   else
