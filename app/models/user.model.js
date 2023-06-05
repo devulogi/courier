@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const moment = require('moment-timezone');
 
 const userSchema = new mongoose.Schema({
   name: String,
@@ -17,8 +18,8 @@ const userSchema = new mongoose.Schema({
      * admin: An admin who can manage users and orders.
      */
   },
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now },
+  createdAt: moment.tz('Asia/Manila').toDate(),
+  updatedAt: moment.tz('Asia/Manila').toDate(),
 });
 
 const User = mongoose.model('User', userSchema);

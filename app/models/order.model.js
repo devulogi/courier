@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const moment = require('moment-timezone');
 
 const orderSchema = new mongoose.Schema({
   customer: { type: mongoose.Schema.Types.ObjectId, ref: 'Customer' },
@@ -14,8 +15,8 @@ const orderSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'DeliveryStatus' 
   },
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now },
+  createdAt: moment.tz('Asia/Manila').toDate(),
+  updatedAt: moment.tz('Asia/Manila').toDate(),
 });
 
 const Order = mongoose.model('Order', orderSchema);

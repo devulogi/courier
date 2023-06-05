@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const moment = require('moment-timezone');
 
 const deliveryStatusSchema = new mongoose.Schema({
   orderId: { 
@@ -19,8 +20,8 @@ const deliveryStatusSchema = new mongoose.Schema({
      */
     default: 'pending-pickup',
   },
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now },
+  createdAt: moment.tz('Asia/Manila').toDate(),
+  updatedAt: moment.tz('Asia/Manila').toDate(),
 });
 
 const DeliveryStatus = mongoose.model('DeliveryStatus', deliveryStatusSchema);
