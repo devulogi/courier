@@ -58,8 +58,8 @@ app.use(
     },
     store: redisStore,
     secret: process.env.SECRET_KEY,
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
   })
 );
 app.use(passport.initialize());
